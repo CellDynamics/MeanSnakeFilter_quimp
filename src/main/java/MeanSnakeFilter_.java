@@ -30,6 +30,9 @@ import uk.ac.warwick.wsbc.QuimP.plugin.utils.QuimpDataConverter;
 public class MeanSnakeFilter_ extends QWindowBuilder implements IQuimpPoint2dFilter, IPadArray,
         IQuimpPluginSynchro, ChangeListener, ActionListener {
 
+    static {
+        System.setProperty("log4j.configurationFile", "meansnakefilterlog4j2.xml");
+    }
     private static final Logger LOGGER = LogManager.getLogger(MeanSnakeFilter_.class.getName());
     private QuimpDataConverter xyData; //!< input List converted to separate X and Y arrays
     private int window; //!< size of processing window

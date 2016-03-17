@@ -30,6 +30,9 @@ import uk.ac.warwick.wsbc.QuimP.plugin.QuimpPluginException;
 public class MeanFilter_Test {
 
     private List<Point2d> testcase;
+    static {
+        System.setProperty("log4j.configurationFile", "meansnakefilterlog4j2.xml");
+    }
     private static final Logger LOGGER = LogManager.getLogger(MeanFilter_Test.class.getName());
 
     /**
