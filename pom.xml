@@ -32,13 +32,6 @@
     <plugins>
     </plugins>
   </build>
-  <dependencies>
-    <dependency>
-      <groupId>uk.ac.warwick.wsbc</groupId>
-      <artifactId>QuimP</artifactId>
-      <version>1.11.2-SNAPSHOT</version>
-    </dependency>
-  </dependencies>
    <reporting>
     <plugins>
       <plugin>
@@ -82,4 +75,11 @@
       </plugin>
     </plugins>
   </reporting>
+   <dependencies>
+   	<dependency>
+   		<groupId>uk.ac.warwick.wsbc</groupId>
+   		<artifactId>QuimP_</artifactId>
+   		<version>16.03.17</version>
+   	</dependency>
+   </dependencies>
 </project>
