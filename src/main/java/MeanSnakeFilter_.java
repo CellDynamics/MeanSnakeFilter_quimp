@@ -223,4 +223,9 @@ public class MeanSnakeFilter_ extends QWindowBuilder implements IQuimpPoint2dFil
         ((JSpinner) ui.get("window")).addChangeListener(this);
         applyB.addActionListener(this); // attach listener to apply button
     }
+
+    @Override
+    public String about() {
+        return "Author: Piotr Baniukiewicz\n" + "mail: p.baniukiewicz@warwick.ac.uk";
+    }
 }
