@@ -187,7 +187,7 @@ public class MeanSnakeFilter_ extends QWindowBuilder implements IQuimpPoint2dFil
 
     @Override
     public String getVersion() {
-        return "1.0.1-SNAPSHOT";
+        return "1.0.1";
     }
 
     @Override
@@ -226,6 +226,7 @@ public class MeanSnakeFilter_ extends QWindowBuilder implements IQuimpPoint2dFil
 
     @Override
     public String about() {
-        return "Author: Piotr Baniukiewicz\n" + "mail: p.baniukiewicz@warwick.ac.uk";
+        return "Running mean filter over outline\nAuthor: Piotr Baniukiewicz\n"
+                + "mail: p.baniukiewicz@warwick.ac.uk";
     }
 }
