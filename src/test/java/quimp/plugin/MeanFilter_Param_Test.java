@@ -1,4 +1,4 @@
-
+package quimp.plugin;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.Arrays;

@@ -1,3 +1,5 @@
+package quimp.plugin;
+
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
@@ -187,7 +189,7 @@ public class MeanSnakeFilter_ extends QWindowBuilder implements IQuimpPoint2dFil
 
     @Override
     public String getVersion() {
-        return "1.0.1";
+        return "1.0.2";
     }
 
     @Override
