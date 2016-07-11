@@ -12,6 +12,7 @@ import javax.vecmath.Point2d;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.core.config.Configurator;
 
 import uk.ac.warwick.wsbc.QuimP.ViewUpdater;
 import uk.ac.warwick.wsbc.QuimP.plugin.IQuimpPluginSynchro;
@@ -33,7 +34,10 @@ public class MeanSnakeFilter_ extends QWindowBuilder implements IQuimpPoint2dFil
         IQuimpPluginSynchro, ChangeListener, ActionListener {
 
     static {
-        System.setProperty("log4j.configurationFile", "meansnakefilterlog4j2.xml");
+        if (System.getProperty("quimp.debugLevel") == null)
+            Configurator.initialize(null, "log4j2_default.xml");
+        else
+            Configurator.initialize(null, System.getProperty("quimp.debugLevel"));
     }
     private static final Logger LOGGER = LogManager.getLogger(MeanSnakeFilter_.class.getName());
     private QuimpDataConverter xyData; //!< input List converted to separate X and Y arrays
