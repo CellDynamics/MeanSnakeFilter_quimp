@@ -18,7 +18,7 @@ import uk.ac.warwick.wsbc.QuimP.ViewUpdater;
 import uk.ac.warwick.wsbc.QuimP.plugin.IQuimpPluginSynchro;
 import uk.ac.warwick.wsbc.QuimP.plugin.ParamList;
 import uk.ac.warwick.wsbc.QuimP.plugin.QuimpPluginException;
-import uk.ac.warwick.wsbc.QuimP.plugin.snakes.IQuimpPoint2dFilter;
+import uk.ac.warwick.wsbc.QuimP.plugin.snakes.IQuimpBOAPoint2dFilter;
 import uk.ac.warwick.wsbc.QuimP.plugin.utils.IPadArray;
 import uk.ac.warwick.wsbc.QuimP.plugin.utils.QWindowBuilder;
 import uk.ac.warwick.wsbc.QuimP.plugin.utils.QuimpDataConverter;
@@ -30,7 +30,7 @@ import uk.ac.warwick.wsbc.QuimP.plugin.utils.QuimpDataConverter;
  * @date 20 Jan 2016
  *
  */
-public class MeanSnakeFilter_ extends QWindowBuilder implements IQuimpPoint2dFilter, IPadArray,
+public class MeanSnakeFilter_ extends QWindowBuilder implements IQuimpBOAPoint2dFilter, IPadArray,
         IQuimpPluginSynchro, ChangeListener, ActionListener {
 
     static {
@@ -137,7 +137,7 @@ public class MeanSnakeFilter_ extends QWindowBuilder implements IQuimpPoint2dFil
      * capabilities.
      * 
      * @return Configuration codes
-     * @see uk.ac.warwick.wsbc.QuimP.plugin.IQuimpPlugin
+     * @see uk.ac.warwick.wsbc.QuimP.plugin.IQuimpCorePlugin
      * @see uk.ac.warwick.wsbc.plugin.IQuimpPlugin.setup()
      */
     @Override
