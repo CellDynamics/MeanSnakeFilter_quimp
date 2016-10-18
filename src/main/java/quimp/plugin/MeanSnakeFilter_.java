@@ -12,12 +12,13 @@ import javax.vecmath.Point2d;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.core.config.Configurator;
 
 import uk.ac.warwick.wsbc.QuimP.ViewUpdater;
 import uk.ac.warwick.wsbc.QuimP.plugin.IQuimpPluginSynchro;
 import uk.ac.warwick.wsbc.QuimP.plugin.ParamList;
 import uk.ac.warwick.wsbc.QuimP.plugin.QuimpPluginException;
-import uk.ac.warwick.wsbc.QuimP.plugin.snakes.IQuimpPoint2dFilter;
+import uk.ac.warwick.wsbc.QuimP.plugin.snakes.IQuimpBOAPoint2dFilter;
 import uk.ac.warwick.wsbc.QuimP.plugin.utils.IPadArray;
 import uk.ac.warwick.wsbc.QuimP.plugin.utils.QWindowBuilder;
 import uk.ac.warwick.wsbc.QuimP.plugin.utils.QuimpDataConverter;
@@ -29,11 +30,14 @@ import uk.ac.warwick.wsbc.QuimP.plugin.utils.QuimpDataConverter;
  * @date 20 Jan 2016
  *
  */
-public class MeanSnakeFilter_ extends QWindowBuilder implements IQuimpPoint2dFilter, IPadArray,
+public class MeanSnakeFilter_ extends QWindowBuilder implements IQuimpBOAPoint2dFilter, IPadArray,
         IQuimpPluginSynchro, ChangeListener, ActionListener {
 
     static {
-        System.setProperty("log4j.configurationFile", "meansnakefilterlog4j2.xml");
+        if (System.getProperty("quimp.debugLevel") == null)
+            Configurator.initialize(null, "log4j2_default.xml");
+        else
+            Configurator.initialize(null, System.getProperty("quimp.debugLevel"));
     }
     private static final Logger LOGGER = LogManager.getLogger(MeanSnakeFilter_.class.getName());
     private QuimpDataConverter xyData; //!< input List converted to separate X and Y arrays
@@ -133,7 +137,7 @@ public class MeanSnakeFilter_ extends QWindowBuilder implements IQuimpPoint2dFil
      * capabilities.
      * 
      * @return Configuration codes
-     * @see uk.ac.warwick.wsbc.QuimP.plugin.IQuimpPlugin
+     * @see uk.ac.warwick.wsbc.QuimP.plugin.IQuimpCorePlugin
      * @see uk.ac.warwick.wsbc.plugin.IQuimpPlugin.setup()
      */
     @Override

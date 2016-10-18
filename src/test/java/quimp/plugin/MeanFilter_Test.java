@@ -24,7 +24,7 @@ import uk.ac.warwick.wsbc.QuimP.plugin.QuimpPluginException;
  * 
  * Contain only simple non-parameterized tests
  * 
- * @author baniuk
+ * @author p.baniukiewicz
  *
  */
 public class MeanFilter_Test {
