@@ -3,6 +3,7 @@
  * @file MeanFilter_Test.java
  */
 package quimp.plugin;
+
 import static org.junit.Assert.assertEquals;
 
 import java.util.ArrayList;
@@ -10,11 +11,11 @@ import java.util.List;
 
 import javax.vecmath.Point2d;
 
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import uk.ac.warwick.wsbc.QuimP.plugin.ParamList;
 import uk.ac.warwick.wsbc.QuimP.plugin.QuimpPluginException;
@@ -30,10 +31,7 @@ import uk.ac.warwick.wsbc.QuimP.plugin.QuimpPluginException;
 public class MeanFilter_Test {
 
     private List<Point2d> testcase;
-    static {
-        System.setProperty("log4j.configurationFile", "meansnakefilterlog4j2.xml");
-    }
-    private static final Logger LOGGER = LogManager.getLogger(MeanFilter_Test.class.getName());
+    static final Logger LOGGER = LoggerFactory.getLogger(MeanFilter_Test.class.getName());
 
     /**
      * Called after construction but before tests
@@ -59,8 +57,8 @@ public class MeanFilter_Test {
      * @test Test of getInterpolationMean method
      * @throws QuimpPluginException
      * @pre Vector of 1-10 elements
-     * @post Running mean for window 3: [4.3333 2.0000 3.0000 4.0000 5.0000
-     * 6.0000 7.0000 8.0000 9.0000 6.6667]
+     * @post Running mean for window 3: [4.3333 2.0000 3.0000 4.0000 5.0000 6.0000 7.0000 8.0000
+     *       9.0000 6.6667]
      */
     @SuppressWarnings("serial")
     @Test

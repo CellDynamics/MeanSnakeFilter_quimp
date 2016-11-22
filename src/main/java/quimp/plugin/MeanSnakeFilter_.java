@@ -10,10 +10,10 @@ import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
 import javax.vecmath.Point2d;
 
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
-import org.apache.logging.log4j.core.config.Configurator;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
+import uk.ac.warwick.wsbc.QuimP.PropertyReader;
 import uk.ac.warwick.wsbc.QuimP.ViewUpdater;
 import uk.ac.warwick.wsbc.QuimP.plugin.IQuimpPluginSynchro;
 import uk.ac.warwick.wsbc.QuimP.plugin.ParamList;
@@ -33,13 +33,7 @@ import uk.ac.warwick.wsbc.QuimP.plugin.utils.QuimpDataConverter;
 public class MeanSnakeFilter_ extends QWindowBuilder implements IQuimpBOAPoint2dFilter, IPadArray,
         IQuimpPluginSynchro, ChangeListener, ActionListener {
 
-    static {
-        if (System.getProperty("quimp.debugLevel") == null)
-            Configurator.initialize(null, "log4j2_default.xml");
-        else
-            Configurator.initialize(null, System.getProperty("quimp.debugLevel"));
-    }
-    private static final Logger LOGGER = LogManager.getLogger(MeanSnakeFilter_.class.getName());
+    static final Logger LOGGER = LoggerFactory.getLogger(MeanSnakeFilter_.class.getName());
     private QuimpDataConverter xyData; //!< input List converted to separate X and Y arrays
     private int window; //!< size of processing window
     private ParamList uiDefinition; //!< Definition of UI
@@ -68,8 +62,8 @@ public class MeanSnakeFilter_ extends QWindowBuilder implements IQuimpBOAPoint2d
     /**
      * Attach data to process.
      * 
-     * Data are as list of vectors defining points of polygon. Passed points
-     * should be sorted according to a clockwise or anti-clockwise direction
+     * Data are as list of vectors defining points of polygon. Passed points should be sorted
+     * according to a clockwise or anti-clockwise direction
      * 
      * @param data Polygon points
      * @see wsbc.plugin.snakes.IQuimpPoint2dFilter.attachData(List<E>)
@@ -84,17 +78,14 @@ public class MeanSnakeFilter_ extends QWindowBuilder implements IQuimpBOAPoint2d
     }
 
     /**
-     * Perform interpolation of data by a moving average filter with given
-     * window
+     * Perform interpolation of data by a moving average filter with given window
      * 
-     * By default uses \b CIRCULAR padding. The window must be uneven, positive
-     * and shorter than data vector. \c X and \c Y coordinates of points are
-     * smoothed separately.
+     * By default uses \b CIRCULAR padding. The window must be uneven, positive and shorter than
+     * data vector. \c X and \c Y coordinates of points are smoothed separately.
      * 
      * @return Filtered points as list of Vector2d objects
-     * @throws QuimpPluginException
-     * when: - window is even - window is longer or equal processed
-     * data - window is negative
+     * @throws QuimpPluginException when: - window is even - window is longer or equal processed
+     *         data - window is negative
      */
     @Override
     public List<Point2d> runPlugin() throws QuimpPluginException {
@@ -133,8 +124,7 @@ public class MeanSnakeFilter_ extends QWindowBuilder implements IQuimpBOAPoint2d
     }
 
     /**
-     * This method should return a flag word that specifies the filters
-     * capabilities.
+     * This method should return a flag word that specifies the filters capabilities.
      * 
      * @return Configuration codes
      * @see uk.ac.warwick.wsbc.QuimP.plugin.IQuimpCorePlugin
@@ -151,13 +141,11 @@ public class MeanSnakeFilter_ extends QWindowBuilder implements IQuimpBOAPoint2d
      * 
      * It is called by plugin user to pass configuration to plugin.
      * 
-     * Supported keys:
-     * -# \c window - size of window
+     * Supported keys: -# \c window - size of window
      * 
-     * @param par configuration as pairs <key,val>. Keys are defined by plugin
-     * creator and plugin user do not modify them.
-     * @throws QuimpPluginException on wrong parameters list or wrong parameter
-     * conversion
+     * @param par configuration as pairs <key,val>. Keys are defined by plugin creator and plugin
+     *        user do not modify them.
+     * @throws QuimpPluginException on wrong parameters list or wrong parameter conversion
      * @see wsbc.plugin.IQuimpPlugin.setPluginConfig(final ParamList)
      */
     @Override
@@ -176,9 +164,8 @@ public class MeanSnakeFilter_ extends QWindowBuilder implements IQuimpBOAPoint2d
     /**
      * Transfer plugin configuration to QuimP
      * 
-     * Only parameters mapped to UI by QWindowBuilder are supported directly by
-     * getValues() Any other parameters created outside QWindowBuilder should be
-     * added here manually.
+     * Only parameters mapped to UI by QWindowBuilder are supported directly by getValues() Any
+     * other parameters created outside QWindowBuilder should be added here manually.
      */
     @Override
     public ParamList getPluginConfig() {
@@ -193,7 +180,12 @@ public class MeanSnakeFilter_ extends QWindowBuilder implements IQuimpBOAPoint2d
 
     @Override
     public String getVersion() {
-        return "1.0.2";
+        String trimmedClassName = getClass().getSimpleName();
+        trimmedClassName = trimmedClassName.substring(0, trimmedClassName.length() - 1); // no _
+        // _ at the end of class does not appears in final jar name, we need it to
+        // distinguish between plugins
+        return PropertyReader.readProperty(getClass(), trimmedClassName,
+                "quimp/plugin/plugin.properties", "internalVersion");
     }
 
     @Override
