@@ -6,14 +6,13 @@ import java.util.Arrays;
 import java.util.Collection;
 import java.util.List;
 
-import javax.vecmath.Point2d;
-
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
+import org.scijava.vecmath.Point2d;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
