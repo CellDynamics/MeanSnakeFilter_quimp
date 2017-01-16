@@ -66,7 +66,7 @@ public class MeanSnakeFilter_ extends QWindowBuilder implements IQuimpBOAPoint2d
      * according to a clockwise or anti-clockwise direction
      * 
      * @param data Polygon points
-     * @see wsbc.plugin.snakes.IQuimpPoint2dFilter.attachData(List<E>)
+     * @see uk.ac.warwick.wsbc.QuimP.plugin.snakes.IQuimpBOAPoint2dFilter#attachData(List)
      */
     @Override
     public void attachData(List<Point2d> data) {
@@ -128,7 +128,7 @@ public class MeanSnakeFilter_ extends QWindowBuilder implements IQuimpBOAPoint2d
      * 
      * @return Configuration codes
      * @see uk.ac.warwick.wsbc.QuimP.plugin.IQuimpCorePlugin
-     * @see uk.ac.warwick.wsbc.plugin.IQuimpPlugin.setup()
+     * @see uk.ac.warwick.wsbc.QuimP.plugin.IQuimpPlugin#setup()
      */
     @Override
     public int setup() {
@@ -146,7 +146,7 @@ public class MeanSnakeFilter_ extends QWindowBuilder implements IQuimpBOAPoint2d
      * @param par configuration as pairs <key,val>. Keys are defined by plugin creator and plugin
      *        user do not modify them.
      * @throws QuimpPluginException on wrong parameters list or wrong parameter conversion
-     * @see wsbc.plugin.IQuimpPlugin.setPluginConfig(final ParamList)
+     * @see uk.ac.warwick.wsbc.QuimP.plugin.IQuimpPlugin#setPluginConfig(ParamList)
      */
     @Override
     public void setPluginConfig(final ParamList par) throws QuimpPluginException {
