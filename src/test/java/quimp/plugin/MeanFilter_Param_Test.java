@@ -6,14 +6,13 @@ import java.util.Arrays;
 import java.util.Collection;
 import java.util.List;
 
-import javax.vecmath.Point2d;
-
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
+import org.scijava.vecmath.Point2d;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -23,8 +22,9 @@ import uk.ac.warwick.wsbc.QuimP.plugin.utils.DataLoader;
 import uk.ac.warwick.wsbc.QuimP.plugin.utils.RoiSaver;
 
 /**
- * Test runner for Interpolate class using parameters. Test only getInterpolationMean method using
- * its own parameters
+ * Test runner for Interpolate class using parameters.
+ * 
+ * Test only getInterpolationMean method using its own parameters
  * 
  * Use src/test/resources/Interpolate_Test_Analyzer.m for plotting results
  * 
@@ -73,8 +73,10 @@ public class MeanFilter_Param_Test {
     /**
      * Set of parameters for tests.
      * 
+     * see: QuimP-toolbox/Prototyping/59-Shape_filtering/main.m for creating *.dat files
+     * 
      * @return List of strings with paths to testfiles and smooth parameter
-     * @see QuimP-toolbox/Prototyping/59-Shape_filtering/main.m for creating *.dat files
+     * 
      */
     @Parameterized.Parameters
     public static Collection<Object[]> testFiles() {
@@ -104,13 +106,19 @@ public class MeanFilter_Param_Test {
     }
 
     /**
+     * Test of getInterpolationMean method.
+     * 
+     * Pre: original images saved as test_roiSaver_
+     * 
+     * Post:Save image test_getInterpolationMean_* in /tmp/
+     * 
+     * See: QuimP-toolbox/algorithms/src/test/resources/ Interpolate_Test_Analyzer.m for plotting
+     * results
+     * 
+     * See: @see QuimP-toolbox/Prototyping/59-Shape_filtering/main.m for creating *.dat files
+     * 
      * @throws QuimpPluginException
-     * @test Test of getInterpolationMean method
-     * @pre original images saved as test_roiSaver_
-     * @post Save image test_getInterpolationMean_* in /tmp/
-     * @see QuimP-toolbox/algorithms/src/test/resources/ Interpolate_Test_Analyzer.m for plotting
-     *      results
-     * @see QuimP-toolbox/Prototyping/59-Shape_filtering/main.m for creating *.dat files
+     * 
      */
     @SuppressWarnings("serial")
     @Test
@@ -132,8 +140,9 @@ public class MeanFilter_Param_Test {
     }
 
     /**
-     * @test Simple test of RoiSaver class, create reference images without processing
-     * @post Save image /tmp/testroiSaver_*.tif
+     * Simple test of RoiSaver class, create reference images without processing.
+     * 
+     * Post: Save image /tmp/testroiSaver_*.tif
      */
     @Test
     @Ignore
