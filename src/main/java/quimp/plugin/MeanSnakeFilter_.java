@@ -13,15 +13,15 @@ import org.scijava.vecmath.Point2d;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import uk.ac.warwick.wsbc.QuimP.PropertyReader;
-import uk.ac.warwick.wsbc.QuimP.ViewUpdater;
-import uk.ac.warwick.wsbc.QuimP.plugin.IQuimpPluginSynchro;
-import uk.ac.warwick.wsbc.QuimP.plugin.ParamList;
-import uk.ac.warwick.wsbc.QuimP.plugin.QuimpPluginException;
-import uk.ac.warwick.wsbc.QuimP.plugin.snakes.IQuimpBOAPoint2dFilter;
-import uk.ac.warwick.wsbc.QuimP.plugin.utils.IPadArray;
-import uk.ac.warwick.wsbc.QuimP.plugin.utils.QWindowBuilder;
-import uk.ac.warwick.wsbc.QuimP.plugin.utils.QuimpDataConverter;
+import uk.ac.warwick.wsbc.quimp.PropertyReader;
+import uk.ac.warwick.wsbc.quimp.ViewUpdater;
+import uk.ac.warwick.wsbc.quimp.plugin.IQuimpPluginSynchro;
+import uk.ac.warwick.wsbc.quimp.plugin.ParamList;
+import uk.ac.warwick.wsbc.quimp.plugin.QuimpPluginException;
+import uk.ac.warwick.wsbc.quimp.plugin.snakes.IQuimpBOAPoint2dFilter;
+import uk.ac.warwick.wsbc.quimp.plugin.utils.IPadArray;
+import uk.ac.warwick.wsbc.quimp.plugin.utils.QWindowBuilder;
+import uk.ac.warwick.wsbc.quimp.plugin.utils.QuimpDataConverter;
 
 /**
  * Interpolation of points (X,Y) by means of running mean method
@@ -66,7 +66,7 @@ public class MeanSnakeFilter_ extends QWindowBuilder implements IQuimpBOAPoint2d
      * according to a clockwise or anti-clockwise direction
      * 
      * @param data Polygon points
-     * @see uk.ac.warwick.wsbc.QuimP.plugin.snakes.IQuimpBOAPoint2dFilter#attachData(List)
+     * @see uk.ac.warwick.wsbc.quimp.plugin.snakes.IQuimpBOAPoint2dFilter#attachData(List)
      */
     @Override
     public void attachData(List<Point2d> data) {
@@ -127,8 +127,8 @@ public class MeanSnakeFilter_ extends QWindowBuilder implements IQuimpBOAPoint2d
      * This method should return a flag word that specifies the filters capabilities.
      * 
      * @return Configuration codes
-     * @see uk.ac.warwick.wsbc.QuimP.plugin.IQuimpCorePlugin
-     * @see uk.ac.warwick.wsbc.QuimP.plugin.IQuimpPlugin#setup()
+     * @see uk.ac.warwick.wsbc.quimp.plugin.IQuimpCorePlugin
+     * @see uk.ac.warwick.wsbc.quimp.plugin.IQuimpPlugin#setup()
      */
     @Override
     public int setup() {
@@ -146,7 +146,7 @@ public class MeanSnakeFilter_ extends QWindowBuilder implements IQuimpBOAPoint2d
      * @param par configuration as pairs <key,val>. Keys are defined by plugin creator and plugin
      *        user do not modify them.
      * @throws QuimpPluginException on wrong parameters list or wrong parameter conversion
-     * @see uk.ac.warwick.wsbc.QuimP.plugin.IQuimpPlugin#setPluginConfig(ParamList)
+     * @see uk.ac.warwick.wsbc.quimp.plugin.IQuimpPlugin#setPluginConfig(ParamList)
      */
     @Override
     public void setPluginConfig(final ParamList par) throws QuimpPluginException {
@@ -173,9 +173,10 @@ public class MeanSnakeFilter_ extends QWindowBuilder implements IQuimpBOAPoint2d
     }
 
     @Override
-    public void showUI(boolean val) {
+    public int showUI(boolean val) {
         LOGGER.debug("Got message to show UI");
         toggleWindow(val);
+        return 0;
     }
 
     @Override

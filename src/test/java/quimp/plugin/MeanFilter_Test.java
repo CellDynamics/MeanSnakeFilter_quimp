@@ -16,8 +16,8 @@ import org.scijava.vecmath.Point2d;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import uk.ac.warwick.wsbc.QuimP.plugin.ParamList;
-import uk.ac.warwick.wsbc.QuimP.plugin.QuimpPluginException;
+import uk.ac.warwick.wsbc.quimp.plugin.ParamList;
+import uk.ac.warwick.wsbc.quimp.plugin.QuimpPluginException;
 
 /**
  * Test runner for Interpolate class.
@@ -53,11 +53,14 @@ public class MeanFilter_Test {
     }
 
     /**
-     * @test Test of getInterpolationMean method
-     * @throws QuimpPluginException
-     * @pre Vector of 1-10 elements
-     * @post Running mean for window 3: [4.3333 2.0000 3.0000 4.0000 5.0000 6.0000 7.0000 8.0000
-     *       9.0000 6.6667]
+     * Test of getInterpolationMean method
+     * 
+     * Pre: Vector of 1-10 elements
+     * <p>
+     * Post: Running mean for window 3: [4.3333 2.0000 3.0000 4.0000 5.0000 6.0000 7.0000 8.0000
+     * 9.0000 6.6667]
+     * 
+     * @throws uk.ac.warwick.wsbc.quimp.plugin.QuimpPluginException
      */
     @SuppressWarnings("serial")
     @Test

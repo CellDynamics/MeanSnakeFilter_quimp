@@ -16,10 +16,10 @@ import org.scijava.vecmath.Point2d;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import uk.ac.warwick.wsbc.QuimP.plugin.ParamList;
-import uk.ac.warwick.wsbc.QuimP.plugin.QuimpPluginException;
-import uk.ac.warwick.wsbc.QuimP.plugin.utils.DataLoader;
-import uk.ac.warwick.wsbc.QuimP.plugin.utils.RoiSaver;
+import uk.ac.warwick.wsbc.quimp.plugin.ParamList;
+import uk.ac.warwick.wsbc.quimp.plugin.QuimpPluginException;
+import uk.ac.warwick.wsbc.quimp.plugin.utils.DataLoader;
+import uk.ac.warwick.wsbc.quimp.plugin.utils.RoiSaver;
 
 /**
  * Test runner for Interpolate class using parameters.
@@ -46,7 +46,7 @@ public class MeanFilter_Param_Test {
      * 
      * @param testFileName test file name
      * @param window averaging window size
-     * @see DataLoader
+     * @see uk.ac.warwick.wsbc.quimp.plugin.utils.DataLoader
      */
     public MeanFilter_Param_Test(String testFileName, Integer window) {
         this.testfileName = Paths.get(testFileName);
