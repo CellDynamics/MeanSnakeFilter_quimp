@@ -173,7 +173,7 @@ public class MeanSnakeFilter_ extends QWindowBuilder implements IQuimpBOAPoint2d
     }
 
     @Override
-    public int showUI(boolean val) {
+    public int showUi(boolean val) {
         LOGGER.debug("Got message to show UI");
         toggleWindow(val);
         return 0;
