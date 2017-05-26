@@ -25,8 +25,8 @@ import org.slf4j.LoggerFactory;
 
 import uk.ac.warwick.wsbc.quimp.plugin.ParamList;
 import uk.ac.warwick.wsbc.quimp.plugin.QuimpPluginException;
-import uk.ac.warwick.wsbc.quimp.plugin.utils.DataLoader;
-import uk.ac.warwick.wsbc.quimp.plugin.utils.RoiSaver;
+import uk.ac.warwick.wsbc.quimp.utils.test.DataLoader;
+import uk.ac.warwick.wsbc.quimp.utils.test.RoiSaver;
 
 /**
  * Test runner for Interpolate class using parameters.
@@ -53,7 +53,7 @@ public class MeanFilter_Param_Test {
    * 
    * @param testFileName test file name
    * @param window averaging window size
-   * @see uk.ac.warwick.wsbc.quimp.plugin.utils.DataLoader
+   * @see DataLoader
    */
   public MeanFilter_Param_Test(String testFileName, Integer window) {
     this.testfileName = Paths.get(testFileName);
@@ -184,7 +184,7 @@ public class MeanFilter_Param_Test {
       }
     });
     out = i.runPlugin();
-    RoiSaver.saveROI("/tmp/test_getInterpolationMean_" + testfileName.getFileName() + "_"
+    RoiSaver.saveRoi("/tmp/test_getInterpolationMean_" + testfileName.getFileName() + "_"
             + window.toString() + ".tif", out);
     LOGGER.debug("setUp: " + testcase.toString());
     if (out.size() < 100)
@@ -199,7 +199,7 @@ public class MeanFilter_Param_Test {
   @Test
   @Ignore
   public void test_roiSaver() {
-    RoiSaver.saveROI(
+    RoiSaver.saveRoi(
             "/tmp/test_roiSaver_" + testfileName.getFileName() + "_" + window.toString() + ".tif",
             testcase);
   }
