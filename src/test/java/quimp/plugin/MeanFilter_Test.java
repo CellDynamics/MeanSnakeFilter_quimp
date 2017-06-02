@@ -1,7 +1,3 @@
-
-/**
- * @file MeanFilter_Test.java
- */
 package quimp.plugin;
 
 import static org.junit.Assert.assertEquals;
@@ -60,7 +56,7 @@ public class MeanFilter_Test {
    * Post: Running mean for window 3: [4.3333 2.0000 3.0000 4.0000 5.0000 6.0000 7.0000 8.0000
    * 9.0000 6.6667]
    * 
-   * @throws uk.ac.warwick.wsbc.quimp.plugin.QuimpPluginException
+   * @throws com.github.celldynamics.quimp.plugin.QuimpPluginException
    */
   @SuppressWarnings("serial")
   @Test
