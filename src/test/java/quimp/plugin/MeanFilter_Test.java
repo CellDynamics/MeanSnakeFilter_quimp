@@ -16,8 +16,8 @@ import org.scijava.vecmath.Point2d;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import uk.ac.warwick.wsbc.quimp.plugin.ParamList;
-import uk.ac.warwick.wsbc.quimp.plugin.QuimpPluginException;
+import com.github.celldynamics.quimp.plugin.ParamList;
+import com.github.celldynamics.quimp.plugin.QuimpPluginException;
 
 /**
  * Test runner for Interpolate class.
@@ -29,63 +29,63 @@ import uk.ac.warwick.wsbc.quimp.plugin.QuimpPluginException;
  */
 public class MeanFilter_Test {
 
-    private List<Point2d> testcase;
-    static final Logger LOGGER = LoggerFactory.getLogger(MeanFilter_Test.class.getName());
+  private List<Point2d> testcase;
+  static final Logger LOGGER = LoggerFactory.getLogger(MeanFilter_Test.class.getName());
 
-    /**
-     * Called after construction but before tests
-     * 
-     * @throws Exception
-     */
-    @Before
-    public void setUp() throws Exception {
-        testcase = new ArrayList<Point2d>();
-        for (int i = 1; i <= 10; i++)
-            testcase.add(new Point2d(i, i));
+  /**
+   * Called after construction but before tests
+   * 
+   * @throws Exception
+   */
+  @Before
+  public void setUp() throws Exception {
+    testcase = new ArrayList<Point2d>();
+    for (int i = 1; i <= 10; i++)
+      testcase.add(new Point2d(i, i));
+  }
+
+  /**
+   * @throws java.lang.Exception
+   */
+  @After
+  public void tearDown() throws Exception {
+    testcase = null;
+  }
+
+  /**
+   * Test of getInterpolationMean method
+   * 
+   * Pre: Vector of 1-10 elements
+   * <p>
+   * Post: Running mean for window 3: [4.3333 2.0000 3.0000 4.0000 5.0000 6.0000 7.0000 8.0000
+   * 9.0000 6.6667]
+   * 
+   * @throws uk.ac.warwick.wsbc.quimp.plugin.QuimpPluginException
+   */
+  @SuppressWarnings("serial")
+  @Test
+  public void test_getInterpolationMean() throws QuimpPluginException {
+    MeanSnakeFilter_ in = new MeanSnakeFilter_();
+    in.attachData(testcase);
+    Integer window = 3;
+    in.setPluginConfig(new ParamList() {
+      {
+        put("Window", String.valueOf(window));
+      }
+    });
+    double[] expected =
+            { 4.3333, 2.0000, 3.0000, 4.0000, 5.0000, 6.0000, 7.0000, 8.0000, 9.0000, 6.6667 };
+
+    List<Point2d> out;
+    out = in.runPlugin();
+    LOGGER.debug("org     : " + testcase.toString());
+    LOGGER.debug("Window 3: " + out.toString());
+
+    for (int i = 0; i < 10; i++) {
+      assertEquals(expected[i], out.get(i).getX(), 1e-4);
+      assertEquals(out.get(i).getX(), out.get(i).getY(), 1e-6);
     }
 
-    /**
-     * @throws java.lang.Exception
-     */
-    @After
-    public void tearDown() throws Exception {
-        testcase = null;
-    }
-
-    /**
-     * Test of getInterpolationMean method
-     * 
-     * Pre: Vector of 1-10 elements
-     * <p>
-     * Post: Running mean for window 3: [4.3333 2.0000 3.0000 4.0000 5.0000 6.0000 7.0000 8.0000
-     * 9.0000 6.6667]
-     * 
-     * @throws uk.ac.warwick.wsbc.quimp.plugin.QuimpPluginException
-     */
-    @SuppressWarnings("serial")
-    @Test
-    public void test_getInterpolationMean() throws QuimpPluginException {
-        MeanSnakeFilter_ in = new MeanSnakeFilter_();
-        in.attachData(testcase);
-        Integer window = 3;
-        in.setPluginConfig(new ParamList() {
-            {
-                put("Window", String.valueOf(window));
-            }
-        });
-        double[] expected =
-                { 4.3333, 2.0000, 3.0000, 4.0000, 5.0000, 6.0000, 7.0000, 8.0000, 9.0000, 6.6667 };
-
-        List<Point2d> out;
-        out = in.runPlugin();
-        LOGGER.debug("org     : " + testcase.toString());
-        LOGGER.debug("Window 3: " + out.toString());
-
-        for (int i = 0; i < 10; i++) {
-            assertEquals(expected[i], out.get(i).getX(), 1e-4);
-            assertEquals(out.get(i).getX(), out.get(i).getY(), 1e-6);
-        }
-
-    }
+  }
 
 }
