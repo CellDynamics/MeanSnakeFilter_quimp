@@ -151,9 +151,11 @@ public class MeanSnakeFilter_ extends QWindowBuilder implements IQuimpBOAPoint2d
   @Override
   public void setPluginConfig(final ParamList par) throws QuimpPluginException {
     try {
-      window = par.getIntValue("window");
+      LOGGER.debug("Set params: " + par);
       setValues(par); // populate loaded values to UI
+      window = par.getIntValue("window");
     } catch (Exception e) {
+      e.printStackTrace();
       // we should never hit this exception as parameters are not touched
       // by caller they are only passed to configuration saver and
       // restored from it
